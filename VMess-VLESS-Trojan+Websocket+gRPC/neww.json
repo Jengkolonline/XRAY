@@ -539,7 +539,7 @@ END
 ===========================
 # INI GRPC NYA
 ===========================
-cat > /etc/xray/grpc.json <<END
+
 {
   "log" : {
     "access": "/var/log/xray/access.log",
