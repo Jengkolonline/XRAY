@@ -1,0 +1,48 @@
+{
+    "log": {
+        "loglevel": "debug"
+    },
+    "inbounds": [
+        {
+            "port": 3080,
+            "listen": "127.0.0.1",
+            "protocol": "socks",
+            "settings": {
+                "udp": true
+            }
+        },
+        {
+            "port": 3081,
+            "protocol": "http",
+            "sniffing": {
+              "enabled": true,
+              "destOverride": ["http", "tls"]
+            },
+            "settings": {
+              "auth": "noauth"
+            }
+        }
+    ],
+    "outbounds": [
+        {
+            "protocol": "trojan",
+            "settings": {
+                "servers": [
+                    {
+                        "address": "",
+                        "flow": "xtls-rprx-direct",
+                        "port": 443,
+                        "password": ""
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "tcp",
+                "security": "xtls",
+                "xtlsSettings": {
+                    "serverName": ""
+                }
+            }
+        }
+    ]
+}
