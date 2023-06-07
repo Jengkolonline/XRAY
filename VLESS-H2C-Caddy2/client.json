@@ -1,0 +1,64 @@
+{
+  "log":{},
+  "inbounds":[
+    {
+      "port":"1080",
+      "protocol":"socks",
+      "settings":{
+        "auth":"noauth",
+        "udp":true
+      }
+    }
+  ],
+  "outbounds":[
+    {
+      "protocol":"vless",
+      "settings":{
+        "vnext":[
+          {
+            "address":"xx.com", // Your server ip or domain name
+            "port":443,
+            "users":[
+              {
+                "id":"", // UUID
+                "encryption":"none"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings":{
+        "network":"h2",
+        "security":"tls",
+        "httpSettings":{
+          "host":[
+            "xx.com" // Your domain
+          ],
+          "path":"/path" // path in server.json
+        }
+      }
+    },
+    {
+      "tag":"direct",
+      "protocol":"freedom",
+      "settings":{}
+    },
+    {
+      "tag":"blocked",
+      "protocol":"blackhole",
+      "settings":{}
+    }
+  ],
+  "routing":{
+    "domainStrategy":"IPOnDemand",
+    "rules":[
+      {
+        "type":"field",
+        "ip":[
+          "geoip:private"
+        ],
+        "outboundTag":"direct"
+      }
+    ]
+  }
+}
