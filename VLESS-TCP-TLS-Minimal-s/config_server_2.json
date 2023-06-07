@@ -1,0 +1,69 @@
+{
+    "log": {
+        "loglevel": "warning",
+        "access": "/var/log/xray/access.log",
+        "error": "/var/log/xray/error.log"
+    },
+    "inbounds": [
+        {
+            "port": 8080,
+            "protocol": "vless",
+            "settings": {
+                "clients": [
+                    {
+                        "id": "",
+                        "email": "admin"
+                    }
+                ],
+                "decryption": "none"
+            },
+            "streamSettings": {
+                "network": "tcp",
+                "security": "tls",
+                "tcpSettings": {
+                    "header": {
+                        "type": "http",
+                        "response": {
+                            "version": "1.1",
+                            "status": "200",
+                            "reason": "OK",
+                            "headers": {
+                                "Content-Type": [
+                                    "application/octet-stream",
+                                    "application/x-msdownload",
+                                    "text/html",
+                                    "application/x-shockwave-flash"
+                                ],
+                                "Transfer-Encoding": ["chunked"],
+                                "Connection": ["keep-alive"],
+                                "Pragma": "no-cache"
+                            }
+                        }
+                    }
+                },
+                "tlsSettings": {
+                    "alpn": [
+                        "h2",
+                        "http/1.1"
+                    ],
+                    "certificates": [
+                        {
+                            "certificateFile": "",
+                            "keyFile": ""
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "outbounds": [
+        {
+            "protocol": "freedom",
+            "tag": "direct"
+        },
+        {
+            "protocol": "blackhole",
+            "tag": "block"
+        }
+    ]
+}
