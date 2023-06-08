@@ -757,7 +757,7 @@ cat > /etc/xray/grpc.json <<END
 }
 END
 =====================
-# H2CENDYVLESS
+#H2CENDYVLESS
 =====================
 cat > /etc/xray/h2c.json <<END
 {
@@ -1080,3 +1080,58 @@ cat > /etc/xray/vmesshttp2.json <<END
     ]
 }
 END
+===============
+#vmessquic
+===============
+cat > /etc/xray/vmessquic.json <<END
+{
+  "log" : {
+    "access": "/var/log/xray/access.log",
+    "error": "/var/log/xray/error.log",
+    "loglevel": "warning"
+  },
+  {
+   "inbounds": [
+        {
+            "listen": "127.0.0.1",
+            "port": "1088",
+            "protocol": "socks",
+            "settings": {
+                "auth": "noauth",
+                "udp": true,
+                "ip": "127.0.0.1"
+            }
+        },
+        {
+            "listen": "127.0.0.1",
+            "port": "1089",
+            "protocol": "http"
+        }
+    ],
+    "outbounds": [
+ "protocol": "vmess",
+ "settings": {
+  "vnext": [
+   {
+    "address": "$domain",
+    "port": 443, // You can also use 8443 nginx's default http3 port https://quic.nginx.org/readme.html
+    "users": [
+     {
+      "id": "1d1c1d94-6987-4658-a4dc-8821a30fe7e0",
+      "security": "zero"
+     }
+    ]
+   }
+  ]
+ },
+ "streamSettings": {
+  "network": "quic",
+  "quicSettings": {}, // No masquerading headers and extra encryption Native quic traffic signature
+  "security": "tls",
+  "tlsSettings": {
+   "servername": "$domain" // Your Server Name (example: www.YYY.com)
+  }
+ }
+}
+END
+
