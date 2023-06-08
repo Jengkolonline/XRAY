@@ -47,7 +47,7 @@ bikin sndiri baru jual kntol
             "settings": {
                 "clients": [
                     {
-                        "id": "uuid",
+                        "id": "1d1c1d94-6987-4658-a4dc-8821a30fe7e0",
                         "flow": "xtls-rprx-vision",
                         "level": 0
 #vlessxtls
@@ -120,7 +120,7 @@ bikin sndiri baru jual kntol
             "settings": {
                 "clients": [
                     {
-                        "password": "uuid",
+                        "password": "1d1c1d94-6987-4658-a4dc-8821a30fe7e0",
                         "level": 0
 #trojantcp
                     }
@@ -147,7 +147,7 @@ bikin sndiri baru jual kntol
             "settings": {
                 "clients": [
                     {
-                        "id": "uuid",
+                        "id": "1d1c1d94-6987-4658-a4dc-8821a30fe7e0",
                         "level": 0
 #vlessws
                     }
@@ -170,7 +170,7 @@ bikin sndiri baru jual kntol
             "settings": {
                 "clients": [
                     {
-                        "id": "uuid",
+                        "id": "1d1c1d94-6987-4658-a4dc-8821a30fe7e0",
                         "level": 0
 #vmessws
                     }
@@ -192,7 +192,7 @@ bikin sndiri baru jual kntol
            "settings": {
              "clients": [
                     {
-                 "id": "uuid",
+                 "id": "1d1c1d94-6987-4658-a4dc-8821a30fe7e0",
                  "level": 0
 #vmesstcp
                     }
@@ -222,7 +222,7 @@ bikin sndiri baru jual kntol
           "decryption":"none",
            "clients": [
               {
-                 "password": "uuid",
+                 "password": "1d1c1d94-6987-4658-a4dc-8821a30fe7e0",
                  "level": 0
 #trojanws
               }
@@ -366,7 +366,7 @@ cat > /usr/local/etc/xray/test.json <<END
       "settings": {
         "clients": [
           {
-            "id": "erroruuid",
+            "id": "1d1c1d94-6987-4658-a4dc-8821a30fe7e0",
             "flow": "xtls-rprx-vision"
           }
         ],
@@ -411,7 +411,7 @@ cat > /usr/local/etc/xray/test.json <<END
           "decryption":"none",
             "clients": [
                {
-                 "id": "uuid"                 
+                 "id": "1d1c1d94-6987-4658-a4dc-8821a30fe7e0"                 
 #vless
              }
           ]
@@ -432,7 +432,7 @@ cat > /usr/local/etc/xray/test.json <<END
       "settings": {
             "clients": [
                {
-                 "id": "uuid",
+                 "id": "1d1c1d94-6987-4658-a4dc-8821a30fe7e0",
                  "alterId": 0
 #vmess
              }
@@ -455,7 +455,7 @@ cat > /usr/local/etc/xray/test.json <<END
           "decryption":"none",		
            "clients": [
               {
-                 "password": "uuid"
+                 "password": "1d1c1d94-6987-4658-a4dc-8821a30fe7e0"
 #trojanws
               }
           ],
@@ -596,7 +596,7 @@ END
       "settings": {
             "clients": [
                {
-                 "id": "uuid1"
+                 "id": "1d1c1d94-6987-4658-a4dc-8821a30fe7e0"
 #vlessgrpc
              }
           ]
@@ -616,7 +616,7 @@ END
       "settings": {
             "clients": [
                {
-                 "id": "${uuid1}",
+                 "id": "1d1c1d94-6987-4658-a4dc-8821a30fe7e0",
                  "alterId": 0
 #vmessgrpc
              }
@@ -638,7 +638,7 @@ END
           "decryption":"none",
              "clients": [
                {
-                 "password": "${uuid2}"
+                 "password": "1d1c1d94-6987-4658-a4dc-8821a30fe7e0"
 #trojangrpc
                }
             ]
