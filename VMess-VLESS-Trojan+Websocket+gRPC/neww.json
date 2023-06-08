@@ -769,7 +769,7 @@ cat > /etc/xray/h2c.json <<END
   "inbounds":[
     {
       "port":"1080",
-      "protocol":"vless",
+      "protocol":"socks",
       "settings":{
         "auth":"noauth",
         "udp":true
@@ -904,7 +904,7 @@ cat > /etc/xray/vlessmkcp.json <<END
         {
             "port": 1083,
             "listen": "127.0.0.1",
-            "protocol": "vlesskcp",
+            "protocol": "socks",
             "settings": {
                 "udp": true
             }
@@ -912,7 +912,7 @@ cat > /etc/xray/vlessmkcp.json <<END
     ],
     "outbounds": [
         {
-            "protocol": "vlesskcp",
+            "protocol": "vless",
             "settings": {
                 "vnext": [
                     {
@@ -951,7 +951,7 @@ cat > /etc/xray/vmesshttp.json <<END
         {
             "listen": "127.0.0.1",
             "port": "1084",
-            "protocol": "vmesshttp",
+            "protocol": "socks",
             "settings": {
                 "auth": "noauth",
                 "udp": true,
@@ -966,7 +966,7 @@ cat > /etc/xray/vmesshttp.json <<END
     ],
     "outbounds": [
         {
-            "protocol": "vmesshttp",
+            "protocol": "vmess",
             "settings": {
                 "vnext": [
                     {
@@ -1023,4 +1023,60 @@ cat > /etc/xray/vmesshttp.json <<END
     ]
 }
 END
-
+===============
+#vmesshttp2
+===============
+cat > /etc/xray/vmesshttp2.json <<END
+{
+  "log" : {
+    "access": "/var/log/xray/access.log",
+    "error": "/var/log/xray/error.log",
+    "loglevel": "warning"
+  },
+    "inbounds": [
+        {
+            "listen": "127.0.0.1",
+            "port": "1086",
+            "protocol": "socks",
+            "settings": {
+                "auth": "noauth",
+                "udp": true,
+                "ip": "127.0.0.1"
+            }
+        },
+        {
+            "listen": "127.0.0.1",
+            "port": "1087",
+            "protocol": "http"
+        }
+    ],
+    "outbounds": [
+        {
+            "protocol": "vmess",
+            "settings": {
+                "vnext": [
+                    {
+                        "address": "$domain",
+                        "port": 443,
+                        "users": [
+                            {
+                                "id": "1d1c1d94-6987-4658-a4dc-8821a30fe7e0",
+                                "security": "none"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "http",
+                "security": "tls"
+            },
+            "tag": "proxy"
+        },
+        {
+            "protocol": "freedom",
+            "tag": "direct"
+        }
+    ]
+}
+END
