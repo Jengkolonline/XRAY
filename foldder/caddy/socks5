@@ -1,0 +1,15 @@
+
+@socks5_path {
+path /worryfree
+path /socks5
+path /jengkolonline
+path /*
+
+}
+
+
+handle @socks5_path {
+    uri path_regexp /.* /
+    reverse_proxy localhost:1081
+    reverse_proxy localhost:1082
+}
