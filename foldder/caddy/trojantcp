@@ -1,4 +1,4 @@
-@ws_path {
+@tcp_path {
 path /worryfree
 path /h2
 path /jengkolonline
@@ -7,7 +7,7 @@ path /*
 }
 
 
-handle @ws_path {
+handle @tcp_path {
     uri path_regexp /.* /
     reverse_proxy localhost:1016
 }
