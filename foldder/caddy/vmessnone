@@ -1,5 +1,5 @@
 
-@ws_path {
+@none_path {
 path /worryfree
 path /vmess-none
 path /jengkolonline
@@ -8,7 +8,7 @@ path /*
 }
 
 
-handle @ws_path {
+handle @none_path {
     uri path_regexp /.* /
     reverse_proxy localhost:1022
 }
