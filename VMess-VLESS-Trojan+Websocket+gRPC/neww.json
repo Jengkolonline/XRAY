@@ -101,8 +101,8 @@ bikin sndiri baru jual kntol
                     ],
                     "certificates": [
                         {
-                            "certificateFile": "/path/to/xray.crt",
-                            "keyFile": "/path/to/xray.key"
+                            "certificateFile": "/etc/xray/xray.crt",
+                            "keyFile": "/etc/xray/xray.key"
                             }
                         ],
                         "ocspStapling": 3600,
