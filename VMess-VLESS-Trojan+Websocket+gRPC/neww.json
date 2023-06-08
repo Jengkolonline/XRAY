@@ -24,6 +24,7 @@ Jngn jual ya!!!!😀
 yg jual Kontol busuk
 bikin sndiri baru jual kntol
 ---------------
+cat > /etc/xray/ws.json <<END
 {
   "log" : {
     "access": "/var/log/xray/access.log",
@@ -342,7 +343,7 @@ EOF
 # // USE API CHECK
 # // JSON NONE TLS
 # // Json File
-cat > /usr/local/etc/xray/test.json <<END
+cat > /etc/xray/none.json <<END
 {
   "log" : {
     "access": "/var/log/xray/access.log",
@@ -573,6 +574,7 @@ END
 # // SHADOWSOCK2022 GRPC TLS
 # // USE API CHECK
 # // Json File
+cat > /etc/xray/grpc.json <<END
 {
   "log" : {
     "access": "/var/log/xray/access.log",
@@ -757,6 +759,7 @@ END
 =====================
 # H2CENDYVLESS
 =====================
+cat > /etc/xray/h2c.json <<END
 {
   "log" : {
     "access": "/var/log/xray/access.log",
@@ -825,3 +828,65 @@ END
     ]
   }
 }
+END
+=================
+#SOCKS5
+=================
+cat > /etc/xray/socks5.json <<END
+{
+  "log" : {
+    "access": "/var/log/xray/access.log",
+    "error": "/var/log/xray/error.log",
+    "loglevel": "warning"
+  },
+    "inbounds": [
+        {
+            "listen": "127.0.0.1",
+            "port": "1080",
+            "protocol": "socks",
+            "settings": {
+                "auth": "noauth",
+                "udp": true,
+                "ip": "127.0.0.1"
+            }
+        },
+        {
+            "listen": "127.0.0.1",
+            "port": "1081",
+            "protocol": "http"
+        }
+    ],
+    "outbounds": [
+        {
+            "protocol": "socks",
+            "settings": {
+                "servers": [
+                    {
+                        "address": "$domain",
+                        "port": 1234,
+                        "users": [
+                            {
+                                "user": "$domain",
+                                "pass": "1d1c1d94-6987-4658-a4dc-8821a30fe7e0"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "tcp",
+                "security": "tls",
+                "tlsSettings": {
+                    "serverName": "$domain",
+                    "allowInsecure": false
+                }
+            },
+            "tag": "proxy"
+        },
+        {
+            "protocol": "freedom",
+            "tag": "direct"
+        }
+    ]
+}
+END
