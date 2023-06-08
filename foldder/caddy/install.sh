@@ -37,23 +37,28 @@ $domain:443
 
     import vless
     handle_path /vless {
-        reverse_proxy localhost:10001
+        reverse_proxy localhost:1011
 
     }
 
     import vmess
     handle_path /vmess {
-        reverse_proxy localhost:10002
+        reverse_proxy localhost:1012
+    }
+
+    import vmesstcp
+    handle_path /vmesstcp {
+        reverse_proxy localhost:1013
     }
 
     import trojan
-    handle_path /trojan-ws {
-        reverse_proxy localhost:10003
+    handle_path /trojan {
+        reverse_proxy localhost:1014
     }
 
     import ss
-    handle_path /ss-ws {
-        reverse_proxy localhost:10004
+    handle_path /shadowsock {
+        reverse_proxy localhost:1015
     }
 
     handle {
