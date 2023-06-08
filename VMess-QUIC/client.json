@@ -1,0 +1,25 @@
+{
+ "protocol": "vmess",
+ "settings": {
+  "vnext": [
+   {
+    "address": "",
+    "port": 443, // You can also use 8443 nginx's default http3 port https://quic.nginx.org/readme.html
+    "users": [
+     {
+      "id": "",
+      "security": "zero"
+     }
+    ]
+   }
+  ]
+ },
+ "streamSettings": {
+  "network": "quic",
+  "quicSettings": {}, // No masquerading headers and extra encryption Native quic traffic signature
+  "security": "tls",
+  "tlsSettings": {
+   "servername": "*" // Your Server Name (example: www.YYY.com)
+  }
+ }
+}
