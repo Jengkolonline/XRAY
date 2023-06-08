@@ -247,7 +247,7 @@ bikin sndiri baru jual kntol
           "password": "$PWD_NYA",
            "clients": [
            {
-          "password": "$PWS_NYA"
+          "password": "oYeM+0BaRj8Gf2UN+l713A=="
 #ssws
            }
           ],
@@ -479,7 +479,7 @@ cat > /usr/local/etc/xray/test.json <<END
           "password": "$PWD_NYA",
            "clients": [
            {
-          "password": "$PWS_NYA"
+          "password": "oYeM+0BaRj8Gf2UN+l713A=="
 #ssws
            }
           ],
@@ -660,7 +660,7 @@ END
        "password": "$PWD_NYA",
         "clients": [
           {
-             "password": "$PWS_NYA"
+             "password": "oYeM+0BaRj8Gf2UN+l713A=="
 #ssgrpc
            }
         ],
