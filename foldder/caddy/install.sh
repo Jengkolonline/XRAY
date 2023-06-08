@@ -8,10 +8,27 @@ sudo apt install caddy
 ### Tambah konfigurasi Caddy
 function caddy(){
     mkdir -p /etc/caddy
-    wget -O /etc/caddy/vmess "${REPO}foldder/caddy/vmess" >/dev/null 2>&1
-    wget -O /etc/caddy/vless "${REPO}foldder/caddy/vless" >/dev/null 2>&1
+    wget -O /etc/caddy/socks5 "${REPO}foldder/caddy/socks5" >/dev/null 2>&1
+    wget -O /etc/caddy/ssgrpc "${REPO}foldder/caddy/ssgrpc" >/dev/null 2>&1
+    wget -O /etc/caddy/ssnone "${REPO}foldder/caddy/ssnone" >/dev/null 2>&1
+    wget -O /etc/caddy/ssws "${REPO}foldder/caddy/ssws" >/dev/null 2>&1
     wget -O /etc/caddy/trojan "${REPO}foldder/caddy/trojan" >/dev/null 2>&1
-    wget -O /etc/caddy/ss-ws "${REPO}foldder/caddy/ss-ws" >/dev/null 2>&1
+    wget -O /etc/caddy/trojangrpc "${REPO}foldder/caddy/trojangrpc" >/dev/null 2>&1
+    wget -O /etc/caddy/trojannone "${REPO}foldder/caddy/trojannone" >/dev/null 2>&1
+    wget -O /etc/caddy/trojantcp "${REPO}foldder/caddy/trojantcp" >/dev/null 2>&1
+    wget -O /etc/caddy/vless "${REPO}foldder/caddy/vless" >/dev/null 2>&1
+    wget -O /etc/caddy/vlessgrpc "${REPO}foldder/caddy/vlessgrpc" >/dev/null 2>&1
+    wget -O /etc/caddy/vlessh2 "${REPO}foldder/caddy/vlessh2" >/dev/null 2>&1
+    wget -O /etc/caddy/vlesskcp "${REPO}foldder/caddy/vlesskcp" >/dev/null 2>&1
+    wget -O /etc/caddy/vlessnone "${REPO}foldder/caddy/vlessnone" >/dev/null 2>&1
+    wget -O /etc/caddy/vmess "${REPO}foldder/caddy/vmess" >/dev/null 2>&1
+    wget -O /etc/caddy/vmessgrpc "${REPO}foldder/caddy/vmessgrpc" >/dev/null 2>&1
+    wget -O /etc/caddy/vmesshttp "${REPO}foldder/caddy/vmesshttp" >/dev/null 2>&1
+    wget -O /etc/caddy/vmesshttp2 "${REPO}foldder/caddy/vmesshttp2" >/dev/null 2>&1
+    wget -O /etc/caddy/vmesskcp "${REPO}foldder/caddy/vmesskcp" >/dev/null 2>&1
+    wget -O /etc/caddy/vmessnone "${REPO}foldder/caddy/vmessnone" >/dev/null 2>&1
+    wget -O /etc/caddy/vmessquic "${REPO}foldder/caddy/vmessquic" >/dev/null 2>&1
+    wget -O /etc/caddy/vmesstcp "${REPO}foldder/caddy/vmesstcp" >/dev/null 2>&1
     cat >/etc/caddy/Caddyfile <<-EOF
 $domain:443
 {
