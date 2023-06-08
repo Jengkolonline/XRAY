@@ -754,108 +754,74 @@ END
   }
 }
 END
-
-/etc/nginx/conf.d/alone.conf
-# Nginx Config By @Keting
-# ============================================================
-# Please do not try to change / modif this config
-# This config is tag to xray if you modified this 
-# Xray will Error / Crash
-# base = UZziell Owner Nginx
-# Nginx TROJAN/VLESS/VMESS/SHADOWSOCK/ GRPC TLS
-# ============================================================
-# (C) Copyright 2022-2023 By Keting
-
-server {                                                                  
-        listen 81;                                                        
-        listen [::]:81;                                                   
-        return 301 https://$host$request_uri;                             
- }
-server {
-    listen 127.0.0.1:82 proxy_protocol default_server; # Http 1.1
-    listen 127.0.0.1:84 proxy_protocol default_server; # Http 1.1
-    set_real_ip_from 127.0.0.1;
-    real_ip_header proxy_protocol;
-    server_name _;
-    return 400;
- }
-
-# // Http 1.1
-server {
-    listen 127.0.0.1:82 proxy_protocol; # Http 1.1/443
-    listen 127.0.0.1:84 proxy_protocol; # Http 1.1/80
-    set_real_ip_from 127.0.0.1;
-    real_ip_header proxy_protocol;
-    server_name ${domain-name};
-
-    location / {
-        add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
-        root /home/vps/public_html;
-        index index.html index.htm;
+=====================
+# H2CENDYVLESS
+=====================
+{
+  "log" : {
+    "access": "/var/log/xray/access.log",
+    "error": "/var/log/xray/error.log",
+    "loglevel": "warning"
+  },
+  "inbounds":[
+    {
+      "port":"1080",
+      "protocol":"vless",
+      "settings":{
+        "auth":"noauth",
+        "udp":true
+      }
     }
+  ],
+  "outbounds":[
+    {
+      "protocol":"vless",
+      "settings":{
+        "vnext":[
+          {
+            "address":"$domain", // Your server ip or domain name
+            "port":443,
+            "users":[
+              {
+                "id":"1d1c1d94-6987-4658-a4dc-8821a30fe7e0", // UUID
+                "encryption":"none"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings":{
+        "network":"h2",
+        "security":"tls",
+        "httpSettings":{
+          "host":[
+            "$domain" // Your domain
+          ],
+          "path":"/vless-h2c" // path in server.json
+        }
+      }
+    },
+    {
+      "tag":"direct",
+      "protocol":"freedom",
+      "settings":{}
+    },
+    {
+      "tag":"blocked",
+      "protocol":"blackhole",
+      "settings":{}
+    }
+  ],
+  "routing":{
+    "domainStrategy":"IPOnDemand",
+    "rules":[
+      {
+        "type":"field",
+        "ip":[
+          "geoip:private"
+        ],
+        "outboundTag":"direct"
+      }
+    ]
+  }
 }
-
-# // Http2 Grpc
-server {
-    listen 127.0.0.1:83 http2 proxy_protocol; # Http2/443
-    set_real_ip_from 127.0.0.1;
-    real_ip_header proxy_protocol;
-    server_name ${domain-name};
-
-# // Grpc Setting
-    grpc_read_timeout 1h;
-    grpc_send_timeout 1h;
-    grpc_set_header X-Real-IP $remote_addr;
-
-# // Grpc Tls
-    location /vless-grpc {
-        if (\$request_method != "POST") {
-            return 404;
-        }
-        client_body_buffer_size 1m;
-        client_body_timeout 1h;
-        client_max_body_size 0;
-        grpc_pass grpc://127.0.0.1:1031;
-
-    }
-
-    location /vmess-grpc {
-        if (\$request_method != "POST") {
-            return 404;
-        }
-        client_body_buffer_size 1m;
-        client_body_timeout 1h;
-        client_max_body_size 0;
-        grpc_pass grpc://127.0.0.1:1032;
-
-    }
-
-    location /trojan-grpc {
-        if (\€$request_method != "POST") {
-            return 404;
-        }
-        client_body_buffer_size 1m;
-        client_body_timeout 1h;
-        client_max_body_size 0;
-        grpc_pass grpc://127.0.0.1:1033;
-
-    }
-    
-    location /ss-grpc {
-        if (\$request_method != "POST") {
-            return 404;
-        }
-        client_body_buffer_size 1m;
-        client_body_timeout 1h;
-        client_max_body_size 0;
-        grpc_pass grpc://127.0.0.1:1034;
-    }
-
-# // Location Folder
-    location / {
-        add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
-        root /home/vps/public_html;
-        index index.html index.htm;
-    }
-}
-EOF
