@@ -1,7 +1,7 @@
 
 @vmesshttp2_path {
 path /worryfree
-path /vmess
+path /vmess-http2
 path /rizkihdytstore
 path /*
 
