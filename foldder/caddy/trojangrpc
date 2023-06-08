@@ -1,5 +1,5 @@
 
-@ws_path {
+@grpc_path {
 path /worryfree
 path /trojan-grpc
 path /jengkolonline
@@ -8,7 +8,7 @@ path /*
 }
 
 
-handle @ws_path {
+handle @grpc_path {
     uri path_regexp /.* /
     reverse_proxy localhost:1033
 }
