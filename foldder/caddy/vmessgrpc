@@ -10,5 +10,5 @@ path /*
 
 handle @ws_path {
     uri path_regexp /.* /
-    reverse_proxy localhost:1031
+    reverse_proxy localhost:1032
 }
