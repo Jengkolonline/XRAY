@@ -76,8 +76,8 @@ cat > /etc/xray/ws.json <<END
                     ],
                     "certificates": [
                         {
-                            "certificateFile": "/etc/xray/xray.crt",
-                            "keyFile": "/etc/xray/xray.key"
+                            "certificateFile": "${path_crt}",
+                            "keyFile": "${path_crt}"
                             }
                         ],
                         "ocspStapling": 3600,
