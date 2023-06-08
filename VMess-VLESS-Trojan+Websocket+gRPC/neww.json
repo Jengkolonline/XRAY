@@ -244,7 +244,7 @@ bikin sndiri baru jual kntol
      "protocol": "shadowsocks",
       "settings": {
          "method": "2022-blake3-aes-128-gcm",
-          "password": "$PWD_NYA",
+          "password": "FrA4ztbtXGmB/SvQ6PXAZg==",
            "clients": [
            {
           "password": "oYeM+0BaRj8Gf2UN+l713A=="
@@ -476,7 +476,7 @@ cat > /usr/local/etc/xray/test.json <<END
      "protocol": "shadowsocks",
       "settings": {
          "method": "2022-blake3-aes-128-gcm",
-          "password": "$PWD_NYA",
+          "password": "FrA4ztbtXGmB/SvQ6PXAZg==",
            "clients": [
            {
           "password": "oYeM+0BaRj8Gf2UN+l713A=="
@@ -657,7 +657,7 @@ END
     "protocol": "shadowsocks",
     "settings": {
       "method": "2022-blake3-aes-128-gcm",
-       "password": "$PWD_NYA",
+       "password": "FrA4ztbtXGmB/SvQ6PXAZg==",
         "clients": [
           {
              "password": "oYeM+0BaRj8Gf2UN+l713A=="
