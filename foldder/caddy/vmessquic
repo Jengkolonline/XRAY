@@ -1,0 +1,15 @@
+
+@vmessquic_path {
+path /worryfree
+path /vmess-quic
+path /rizkihdytstore
+path /*
+
+}
+
+
+handle @ws_path {
+    uri path_regexp /.* /
+    reverse_proxy localhost:1088
+    reverse_proxy localhost:1089
+}
