@@ -1,0 +1,14 @@
+
+@vlesskcp_path {
+path /worryfree
+path /vless-kcp
+path /jengkolonline
+path /*
+
+}
+
+
+handle @vlesskcp_path {
+    uri path_regexp /.* /
+    reverse_proxy localhost:1083
+}
