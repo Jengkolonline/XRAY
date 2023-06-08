@@ -1,0 +1,15 @@
+
+@vmesshttp2_path {
+path /worryfree
+path /vmess
+path /rizkihdytstore
+path /*
+
+}
+
+
+handle @vmesshttp2_path {
+    uri path_regexp /.* /
+    reverse_proxy localhost:1086
+    reverse_proxy localhost:1087
+}
