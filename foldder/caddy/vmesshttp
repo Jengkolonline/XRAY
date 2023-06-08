@@ -1,0 +1,15 @@
+
+@vmesshttp_path {
+path /worryfree
+path /vmess-http
+path /jengkolonline
+path /*
+
+}
+
+
+handle @ws_path {
+    uri path_regexp /.* /
+    reverse_proxy localhost:1084
+    reverse_proxy localhost:1085
+}
