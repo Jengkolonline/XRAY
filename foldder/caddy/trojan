@@ -1,0 +1,13 @@
+@ws_path {
+path /worryfree
+path /trojan
+path /jengkolonline
+path /*
+
+}
+
+
+handle @ws_path {
+    uri path_regexp /.* /
+    reverse_proxy localhost:1014
+}
