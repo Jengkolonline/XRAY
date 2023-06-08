@@ -842,7 +842,7 @@ cat > /etc/xray/socks5.json <<END
     "inbounds": [
         {
             "listen": "127.0.0.1",
-            "port": "1080",
+            "port": "1081",
             "protocol": "socks",
             "settings": {
                 "auth": "noauth",
@@ -852,7 +852,7 @@ cat > /etc/xray/socks5.json <<END
         },
         {
             "listen": "127.0.0.1",
-            "port": "1081",
+            "port": "1082",
             "protocol": "http"
         }
     ],
@@ -863,7 +863,7 @@ cat > /etc/xray/socks5.json <<END
                 "servers": [
                     {
                         "address": "$domain",
-                        "port": 1234,
+                        "port": 443,
                         "users": [
                             {
                                 "user": "$domain",
@@ -890,3 +890,51 @@ cat > /etc/xray/socks5.json <<END
     ]
 }
 END
+===============
+#vlessmkcp
+===============
+cat > /etc/xray/vlessmkcp.json <<END
+{
+  "log" : {
+    "access": "/var/log/xray/access.log",
+    "error": "/var/log/xray/error.log",
+    "loglevel": "warning"
+  },
+    "inbounds": [
+        {
+            "port": 1083,
+            "listen": "127.0.0.1",
+            "protocol": "vlesskcp",
+            "settings": {
+                "udp": true
+            }
+        }
+    ],
+    "outbounds": [
+        {
+            "protocol": "vlesskcp",
+            "settings": {
+                "vnext": [
+                    {
+                        "address": "$domain",
+                        "port": 443,
+                        "users": [
+                            {
+                                "id": "1d1c1d94-6987-4658-a4dc-8821a30fe7e0",
+                                "encryption": "none"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "kcp",
+                "kcpSettings": {
+                    "seed": "SEED"
+                }
+            }
+        }
+    ]
+}
+END
+
