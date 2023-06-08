@@ -1,29 +1,3 @@
-# // VLESS TCP XTLS VMESS TCP TROJAN TCP & TLS
-# // VLESS / VMESS / TROJAN / SDOWSCK WS TLS
-# // VLESS / VMESS / TROJAN / SDOWSCK WS NONE
-# // VLESS / VMESS / TROJAN / SDOWSCK GRPC TLS
-# // USE API CHECK
-# // JSON OVER TCP XTLS
-
-# // OPN SSL SHADOWSOCK 2022 WS TLS & NONE TLS PASSWD
-openssl rand -base64 16 > /usr/local/etc/xray/passwd
-export PWS_NYA=$(openssl rand -base64 16)
-export PWD_NYA=$(cat /usr/local/etc/xray/passwd)
-
---------------
-Info Untuk Full Json 
-Vless/Vmess/Trojan/Shadowsock/
-Grpc Tls & core xray
-Ws Tls & core xray
-Ws None & core xray
-Trojango ws & core trojan
-
-# Tak Paham Tnya Kawan
-Aman dc
-Jngn jual ya!!!!😀
-yg jual Kontol busuk
-bikin sndiri baru jual kntol
----------------
 cat > /etc/xray/ws.json <<END
 {
   "log" : {
@@ -336,13 +310,9 @@ cat > /etc/xray/ws.json <<END
   }
 }
 EOF
-
-##############################
-# // VLESS WS VMESS WS TROJAN WS & NONE
-# // SHADOWSOCK2022 WS NONE
-# // USE API CHECK
-# // JSON NONE TLS
-# // Json File
+=============
+#Untuk none tlsnya
+=============
 cat > /etc/xray/none.json <<END
 {
   "log" : {
@@ -568,12 +538,9 @@ cat > /etc/xray/none.json <<END
   }
 }
 END
-##############################
-##############################
-# // VLESS WS VMESS WS TROJAN GRPC TLS
-# // SHADOWSOCK2022 GRPC TLS
-# // USE API CHECK
-# // Json File
+==============
+# untuk grpcnya
+==============
 cat > /etc/xray/grpc.json <<END
 {
   "log" : {
@@ -1132,6 +1099,53 @@ cat > /etc/xray/vmessquic.json <<END
    "servername": "$domain" // Your Server Name (example: www.YYY.com)
   }
  }
+}
+END
+==============
+#vmessmkcp
+===============
+cat > /etc/xray/vmessmkcp.json <<END
+{
+  "log" : {
+    "access": "/var/log/xray/access.log",
+    "error": "/var/log/xray/error.log",
+    "loglevel": "warning"
+  },
+    "inbounds": [
+        {
+            "port": 10810,
+            "listen": "127.0.0.1",
+            "protocol": "socks",
+            "settings": {
+                "udp": true
+            }
+        }
+    ],
+    "outbounds": [
+        {
+            "protocol": "vmess",
+            "settings": {
+                "vnext": [
+                    {
+                        "address": "$domain",
+                        "port": 443,
+                        "users": [
+                            {
+                                "id": "1d1c1d94-6987-4658-a4dc-8821a30fe7e0",
+                                "encryption": "none"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "kcp",
+                "kcpSettings": {
+                    "seed": "SEED"
+                }
+            }
+        }
+    ]
 }
 END
 
