@@ -37,7 +37,7 @@ TIME=$(date +'%Y-%m-%d %H:%M:%S')
 RAMMS=$(free -m | awk 'NR==2 {print $2}')
 KEY="6149751863:AAH_trZtL0Y6NMskF6nxeVGZgFpowXi85uc"
 URL="https://api.telegram.org/bot$KEY/sendMessage"
-GITHUB_CMD="https://github.com/Kulanbagong1/Autoscript-vps/raw/"
+GITHUB_CMD="https://github.com/Jengkolonline/XRAY/raw/"
 #NAMECOM=$(curl -sS https://sc-xray.yha.my.id/ip | grep $MYIP | awk '{print $2}')
 OS=$(cat /etc/os-release | grep -w PRETTY_NAME | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/PRETTY_NAME//g')
 dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
@@ -70,7 +70,7 @@ function is_root() {
 }
 judge() {
     if [[ 0 -eq $? ]]; then
-        print_ok "$1 Complete... | thx to ${YELLOW}bhoikfostyahya${FONT}"
+        print_ok "$1 Complete... | thx to ${YELLOW}JENGKOLONLINE${FONT}"
         sleep 1
     fi
 }
@@ -126,10 +126,10 @@ function install_xray() {
     wget -O /root/.config/rclone/rclone.conf "${GITHUB_CMD}main/RCLONE%2BBACKUP-Gdrive/rclone.conf" >/dev/null 2>&1
     wget -O /etc/xray/config.json "${GITHUB_CMD}main/VMess-VLESS-Trojan%2BWebsocket%2BgRPC/config.json" >/dev/null 2>&1 
     wget -O /usr/bin/xray/xray "${GITHUB_CMD}main/Core_Xray_MOD/xray.linux.64bit" >/dev/null 2>&1
-    wget -O /usr/bin/ws "${GITHUB_CMD}main/fodder/websocket/ws" >/dev/null 2>&1
-    wget -O /usr/bin/tun.conf "${GITHUB_CMD}main/fodder/websocket/tun.conf" >/dev/null 2>&1
-    wget -O /etc/systemd/system/ws.service "${GITHUB_CMD}main/fodder/websocket/ws.service" >/dev/null 2>&1
-    wget -q -O /etc/ipserver "${GITHUB_CMD}main/fodder/FighterTunnel-examples/ipserver" && bash /etc/ipserver >/dev/null 2>&1
+    wget -O /usr/bin/ws "${GITHUB_CMD}main/foldder/websocket/ws" >/dev/null 2>&1
+    wget -O /usr/bin/tun.conf "${GITHUB_CMD}main/foldder/websocket/tun.conf" >/dev/null 2>&1
+    wget -O /etc/systemd/system/ws.service "${GITHUB_CMD}main/foldder/websocket/ws.service" >/dev/null 2>&1
+    wget -q -O /etc/ipserver "${GITHUB_CMD}main/foldder/jengkolonline/ipserver" && bash /etc/ipserver >/dev/null 2>&1
     chmod +x /usr/bin/xray/xray
     chmod +x /etc/systemd/system/ws.service
     chmod +x /usr/bin/ws
@@ -178,9 +178,9 @@ EOF
 function download_config() {
     cd
     rm -rf *
-    wget -O /etc/haproxy/haproxy.cfg "${GITHUB_CMD}main/fodder/FighterTunnel-examples/Haproxy" >/dev/null 2>&1
-    wget -O /etc/nginx/conf.d/xray.conf "${GITHUB_CMD}main/fodder/nginx/xray.conf" >/dev/null 2>&1
-    wget -O /etc/nginx/nginx.conf "${GITHUB_CMD}main/fodder/nginx/nginx.conf" >/dev/null 2>&1
+    wget -O /etc/haproxy/haproxy.cfg "${GITHUB_CMD}main/foldder/jengkolonline/Haproxy" >/dev/null 2>&1
+    wget -O /etc/nginx/conf.d/xray.conf "${GITHUB_CMD}main/foldder/nginx/xray.conf" >/dev/null 2>&1
+    wget -O /etc/nginx/nginx.conf "${GITHUB_CMD}main/foldder/nginx/nginx.conf" >/dev/null 2>&1
     wget ${GITHUB_CMD}main/fodder/nginx/XrayFT.zip >/dev/null 2>&1
     7z e -pabdullah XrayFT.zip
     rm -f XrayFT.zip
@@ -247,10 +247,10 @@ END
     chmod +x /etc/rc.local
 
     apt install squid -y
-    wget -q -O /etc/squid/squid.conf "${GITHUB_CMD}main/fodder/FighterTunnel-examples/squid.conf" >/dev/null 2>&1
-    wget -q -O /etc/default/dropbear "${GITHUB_CMD}main/fodder/FighterTunnel-examples/dropbear" >/dev/null 2>&1
-    wget -q -O /etc/ssh/sshd_config "${GITHUB_CMD}main/fodder/FighterTunnel-examples/sshd_config" >/dev/null 2>&1
-    wget -q -O /etc/fightertunnel.txt "${GITHUB_CMD}main/fodder/FighterTunnel-examples/banner" >/dev/null 2>&1
+    wget -q -O /etc/squid/squid.conf "${GITHUB_CMD}main/foldder/jengkolonline/squid.conf" >/dev/null 2>&1
+    wget -q -O /etc/default/dropbear "${GITHUB_CMD}main/foldder/jengkolonline/dropbear" >/dev/null 2>&1
+    wget -q -O /etc/ssh/sshd_config "${GITHUB_CMD}main/foldder/jengkolonline/sshd_config" >/dev/null 2>&1
+    wget -q -O /etc/fightertunnel.txt "${GITHUB_CMD}main/foldder/jengkolonline/banner" >/dev/null 2>&1
     AUTOREB=$(cat /home/daily_reboot)
     SETT=11
     if [ $AUTOREB -gt $SETT ]; then
@@ -295,7 +295,7 @@ function configure_nginx() {
     rm /var/www/html/*.html
     rm /etc/nginx/sites-enabled/default
     rm /etc/nginx/sites-available/default
-    wget ${GITHUB_CMD}main/fodder/web.zip >/dev/null 2>&1
+    wget ${GITHUB_CMD}main/foldder/web.zip >/dev/null 2>&1
     unzip -x web.zip
     rm -f web.zip
     mv * /var/www/html/
@@ -335,7 +335,7 @@ LINUX       : <code>${OS}</code>
     sed -i -e 's/\r$//' /usr/bin/renew-ssh
     sed -i -e 's/\r$//' /usr/bin/del-ssh
     chown -R www-data:www-data /etc/msmtprc
-    source <(curl -sL ${GITHUB_CMD}main/fodder/FighterTunnel-examples/Documentation/tunlp)
+    source <(curl -sL ${GITHUB_CMD}main/foldder/jengkolonline/Documentation/tunlp)
     systemctl daemon-reload
     systemctl enable client
     systemctl enable server
@@ -425,13 +425,13 @@ function dependency_install() {
     judge "Update configuration"
 
     judge "Installed openvpn easy-rsa"
-    source <(curl -sL ${GITHUB_CMD}main/fodder/openvpn/openvpn)
+    source <(curl -sL ${GITHUB_CMD}main/foldder/openvpn/openvpn)
     source <(curl -sL ${GITHUB_CMD}main/BadVPN-UDPWG/ins-badvpn)
 
     judge "Installed itil vpn"
-    wget -O /etc/pam.d/common-password "${GITHUB_CMD}main/fodder/FighterTunnel-examples/common-password" >/dev/null 2>&1
+    wget -O /etc/pam.d/common-password "${GITHUB_CMD}main/follder/jengkolonline/common-password" >/dev/null 2>&1
     chmod +x /etc/pam.d/common-password
-    source <(curl -sL ${GITHUB_CMD}main/fodder/openvpn/openvpn)
+    source <(curl -sL ${GITHUB_CMD}main/foldder/openvpn/openvpn)
 
     DEBIAN_FRONTEND=noninteractive dpkg-reconfigure keyboard-configuration
     debconf-set-selections <<<"keyboard-configuration keyboard-configuration/altgr select The default for the keyboard layout"
