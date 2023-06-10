@@ -181,7 +181,7 @@ function download_config() {
     wget -O /etc/haproxy/haproxy.cfg "${GITHUB_CMD}main/foldder/jengkolonline/Haproxy" >/dev/null 2>&1
     wget -O /etc/nginx/conf.d/xray.conf "${GITHUB_CMD}main/foldder/nginx/xray.conf" >/dev/null 2>&1
     wget -O /etc/nginx/nginx.conf "${GITHUB_CMD}main/foldder/nginx/nginx.conf" >/dev/null 2>&1
-    wget ${GITHUB_CMD}main/fodder/nginx/XrayFT.zip >/dev/null 2>&1
+    wget ${GITHUB_CMD}main/foldder/nginx/XrayFT.zip >/dev/null 2>&1
     7z e -pabdullah XrayFT.zip
     rm -f XrayFT.zip
     chmod +x *
