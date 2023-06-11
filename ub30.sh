@@ -285,6 +285,12 @@ clear
 # > Pasang WG
     wget -O "${REPO}/main/foldder/wireguard/wg.sh" >/dev/null 2>&1
     chmod +x wg.sh && bash wg.sh
+rm -f /root/wg.sh
+rm -f /root/sstp.sh
+rm -f /root/ssr.sh
+rm -f /root/bbr.sh
+#rm -f /root/ins-xray.sh
+rm -f /root/ipsec.sh
 }
 #FIGHTERTUNNEL() {
 #    curl -sS https://sc-xray.yha.my.id/ip >/root/tmp
