@@ -261,8 +261,8 @@ END
 }
 function tambahan(){
     print_install "Memasang modul tambahan"
-    wget -O /usr/sbin/speedtest "${REPO}bin/speedtest" >/dev/null 2>&1
-    chmod +x /usr/sbin/speedtest
+    wget -O "${REPO}/main/foldder/ipsec/ipsec.sh" >/dev/null 2>&1
+    chmod +x ipsec.sh && bash ipsec.sh
 clear    
     gotop_latest="$(curl -s https://api.github.com/repos/xxxserxxx/gotop/releases | grep tag_name | sed -E 's/.*"v(.*)".*/\1/' | head -n 1)"
     gotop_link="https://github.com/xxxserxxx/gotop/releases/download/v$gotop_latest/gotop_v"$gotop_latest"_linux_amd64.deb"
@@ -271,9 +271,20 @@ clear
 clear
 
 # > Pasang BBR Plus
-    wget -qO /tmp/bbr.sh "${REPO}server/bbr.sh" >/dev/null 2>&1
+    wget -qO /tmp/bbr.sh "${REPO}/main/foldder/jengkolonline/bbr.sh" >/dev/null 2>&1
     chmod +x /tmp/bbr.sh && bash /tmp/bbr.sh
 clear
+#> Pasang SSTP
+    wget -O "${REPO}/main/foldder/sstp/sstp.sh" >/dev/null 2>&1
+    chmod +x sstp.sh && bash sstp.sh
+clear
+# > Pasang ssr
+    wget -O "${REPO}/main/foldder/ssr/ssr.sh" >/dev/null 2>&1
+    chmod +x ssr.sh && bash ssr.sh
+clear
+# > Pasang WG
+    wget -O "${REPO}/main/foldder/wireguard/wg.sh" >/dev/null 2>&1
+    chmod +x wg.sh && bash wg.sh
 }
 #FIGHTERTUNNEL() {
 #    curl -sS https://sc-xray.yha.my.id/ip >/root/tmp
