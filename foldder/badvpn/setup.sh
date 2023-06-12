@@ -1,10 +1,10 @@
 #!/bin/bash
-REPO="https://raw.githubusercontent.com/rizkihdyt6/scupdate/rizki/"
-wget -O /usr/sbin/badvpn "${REPO}badvpn/badvpn" >/dev/null 2>&1
+REPO="https://raw.githubusercontent.com/Jengkolonline/XRAY/main/"
+wget -O /usr/sbin/badvpn "${REPO}foldder/badvpn/badvpn" >/dev/null 2>&1
 chmod +x /usr/sbin/badvpn > /dev/null 2>&1
-wget -q -O /etc/systemd/system/badvpn1.service "${REPO}badvpn/badvpn1.service" >/dev/null 2>&1
-wget -q -O /etc/systemd/system/badvpn2.service "${REPO}badvpn/badvpn2.service" >/dev/null 2>&1
-wget -q -O /etc/systemd/system/badvpn3.service "${REPO}badvpn/badvpn3.service" >/dev/null 2>&1
+wget -q -O /etc/systemd/system/badvpn1.service "${REPO}foldder/badvpn/badvpn1.service" >/dev/null 2>&1
+wget -q -O /etc/systemd/system/badvpn2.service "${REPO}foldder/badvpn/badvpn2.service" >/dev/null 2>&1
+wget -q -O /etc/systemd/system/badvpn3.service "${REPO}foldder/badvpn/badvpn3.service" >/dev/null 2>&1
 systemctl disable badvpn1 
 systemctl stop badvpn1 
 systemctl enable badvpn1
