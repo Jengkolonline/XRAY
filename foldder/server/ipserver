@@ -25,7 +25,10 @@ iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 10005 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 10006 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 10007 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 10008 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 10009 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 10010 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 10011 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 10012 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 3128 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m udp -p udp --dport 80 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m udp -p udp --dport 88 -j ACCEPT
@@ -49,7 +52,10 @@ iptables -I INPUT -m state --state NEW -m udp -p udp --dport 10005 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m udp -p udp --dport 10006 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m udp -p udp --dport 10007 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m udp -p udp --dport 10008 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m udp -p udp --dport 10009 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m udp -p udp --dport 10010 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m udp -p udp --dport 10011 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m udp -p udp --dport 10012 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m udp -p udp --dport 3128 -j ACCEPT
 usermod --password $(echo vps | openssl passwd -1 -stdin) vps
 iptables -A FORWARD -m string --algo bm --string "BitTorrent" -j DROP
