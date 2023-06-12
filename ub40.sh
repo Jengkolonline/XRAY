@@ -71,6 +71,23 @@ function is_root() {
 
 }
 
+function LOGO() {
+echo -e ""
+echo -e "\033[31m┌───────────────────────────────────────────────┐\e[0m" 
+echo -e " ${YELLOW}     _______  _________ ______  __ ${NC} ${RED}PREMIUM${NC}"
+echo -e " ${YELLOW} __ / / __/ |/ / ___/ //_/ __ \/ / ${NC} ${RED}SCRIPT${NC}"
+echo -e " ${YELLOW}/ // / _//    / (_ / ,< / /_/ / /__${NC} ${BLUE}========${NC}"
+echo -e " ${YELLOW}\___/___/_/|_/\___/_/|_|\____/____/${NC}"
+echo -e " ${RED}───────${NC} ${Green} / __ \/ |/ / /  /  _/ |/ / __//|  ${NC}"  
+echo -e " ${RED}───────${NC} ${Green}/ /_/ /    / /___/ //    / _/> _< ${NC}"  
+echo -e " ${RED}───────${NC} ${Green}\____/_/|_/____/___/_/|_/___/|/   ${NC}"
+echo -e " ${Green}MULTI PROT PROT${FONT} (C)${GRAY} AUTO INSTALASI${NC}" 
+echo -e "\033[31m└───────────────────────────────────────────────┘\e[0m"
+echo -e "      ${RED}Autoscript xray vpn lite (multi port)${FONT}"    
+echo -e "${RED}Make sure the internet is smooth when installing the script${FONT}"
+echo -e ""        
+}
+
 ### Change Environment System
 function first_setup(){
     timedatectl set-timezone Asia/Jakarta
