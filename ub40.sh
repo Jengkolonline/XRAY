@@ -111,7 +111,7 @@ clear
 ### Buat direktori xray
 function dir_xray() {
     print_install "Membuat direktori xray"
-    mkdir -p /etc/{xray,vmess,websocket,vless,trojan,shadowsocks}
+    mkdir -p /etc/{xray,vmess,websocket,vless,trojan,shadowsocks,socks,shadowsocks2022}
     # mkdir -p /usr/sbin/xray/
     mkdir -p /var/log/xray/
     mkdir -p /var/www/html/
@@ -124,6 +124,8 @@ function dir_xray() {
     touch /etc/trojan/.trojan.db
     touch /etc/ssh/.ssh.db
     touch /etc/shadowsocks/.shadowsocks.db
+    touch /etc/socks/.socks.db
+    touch /etc/shadowsocks2022/.shadowsocks2022.db
     clear
 }
 
@@ -227,12 +229,12 @@ function install_xray(){
     print_success "Xray Core"
     
     cat /etc/xray/xray.crt /etc/xray/xray.key | tee /etc/haproxy/xray.pem
-    wget -O /etc/xray/config.json "${REPO}xray/config.json" >/dev/null 2>&1 
-    #wget -O /usr/sbin/xray/ "${REPO}bin/xray" >/dev/null 2>&1
-    wget -O /usr/sbin/websocket "${REPO}bin/ws" >/dev/null 2>&1
-    wget -O /etc/websocket/tun.conf "${REPO}xray/tun.conf" >/dev/null 2>&1 
-    wget -O /etc/systemd/system/ws.service "${REPO}xray/ws.service" >/dev/null 2>&1 
-    wget -q -O /etc/ipserver "${REPO}server/ipserver" && bash /etc/ipserver >/dev/null 2>&1
+    wget -O /etc/xray/config.json "${REPO}VMess-VLESS-Trojan%2BWebsocket%2BgRPC/config.json" >/dev/null 2>&1 
+    #wget -O /usr/sbin/xray/ "${REPO}foldder/nginx/X-ray.conf" >/dev/null 2>&1
+    wget -O /usr/sbin/websocket "${REPO}foldder/bin/ws" >/dev/null 2>&1
+    wget -O /etc/websocket/tun.conf "${REPO}foldder/xray/tun.conf" >/dev/null 2>&1 
+    wget -O /etc/systemd/system/ws.service "${REPO}foldder/xray/ws.service" >/dev/null 2>&1 
+    wget -q -O /etc/ipserver "${REPO}foldder/server/ipserver" && bash /etc/ipserver >/dev/null 2>&1
 
     # > Set Permission
     chmod +x /usr/sbin/xray
@@ -269,18 +271,19 @@ print_success "Xray C0re"
 ### Pasang OpenVPN
 function install_ovpn(){
     print_install "Memasang modul Openvpn"
-    source <(curl -sL ${REPO}openvpn/openvpn)
-    wget -O /etc/pam.d/common-password "${REPO}openvpn/common-password" >/dev/null 2>&1
+    source <(curl -sL ${REPO}foldder/openvpn/openvpn)
+    wget -O /etc/pam.d/common-password "${REPO}foldder/openvpn/common-password" >/dev/null 2>&1
     chmod +x /etc/pam.d/common-password
     # > BadVPN
-    source <(curl -sL ${REPO}badvpn/setup.sh)
+    source <(curl -sL ${REPO}foldder/badvpn/setup.sh)
     print_success "OpenVPN"
 }
 
 ### Pasang SlowDNS
 function install_slowdns(){
     print_install "Memasang modul SlowDNS Server"
-    wget -q -O /tmp/nameserver "${REPO}slowdns/nameserver" >/dev/null 2>&1
+    wget -q -O /tmp/nameserver "${REPO}X-SlowDNS/nameserver" >/dev/null 2>&1
+#/nameserver" >/dev/null 2>&1
     chmod +x /tmp/nameserver
     bash /tmp/nameserver | tee /root/install.log
     print_success "SlowDNS"
@@ -290,7 +293,7 @@ function install_slowdns(){
 function pasang_rclone() {
     print_install "Memasang Rclone"
     print_success "Installing Rclone"
-    curl "${REPO}bin/rclone" | bash >/dev/null 2>&1
+    curl "${REPO}foldder/bin/rclone" | bash >/dev/null 2>&1
     print_success "Rclone"
 }
 
