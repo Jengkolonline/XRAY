@@ -300,12 +300,12 @@ function pasang_rclone() {
 ### Ambil Konfig
 function download_config(){
     print_install "Memasang konfigurasi paket konfigurasi"
-    wget -O /etc/haproxy/haproxy.cfg "${REPO}config/haproxy.cfg" >/dev/null 2>&1
-    wget -O /etc/nginx/conf.d/geostore.conf "${REPO}config/geovpn.conf" >/dev/null 2>&1
+    wget -O /etc/haproxy/haproxy.cfg "${REPO}foldder/config2/haproxy.cfg" >/dev/null 2>&1
+    wget -O /etc/nginx/conf.d/geostore.conf "${REPO}foldder/config2/geovpn.conf" >/dev/null 2>&1
     sed -i "s/xxx/${domain}/g" /etc/nginx/conf.d/geostore.conf
-    wget -O /etc/nginx/nginx.conf "${REPO}config/nginx.conf" >/dev/null 2>&1
+    wget -O /etc/nginx/nginx.conf "${REPO}foldder/config2/nginx.conf" >/dev/null 2>&1
     # > curl "${REPO}caddy/install.sh" | bash 
-    wget -q -O /etc/squid/squid.conf "${REPO}config/squid.conf" >/dev/null 2>&1
+    wget -q -O /etc/squid/squid.conf "${REPO}foldder/config2/squid.conf" >/dev/null 2>&1
     echo "visible_hostname $(cat /etc/xray/domain)" /etc/squid/squid.conf
     mkdir -p /var/log/squid/cache/
     chmod 777 /var/log/squid/cache/
@@ -315,11 +315,11 @@ function download_config(){
 
     # > Add Dropbear
     apt install dropbear -y
-    wget -q -O /etc/default/dropbear "${REPO}config/dropbear" >/dev/null 2>&1
+    wget -q -O /etc/default/dropbear "${REPO}foldder/config2/dropbear" >/dev/null 2>&1
     chmod 644 /etc/default/dropbear
-    wget -q -O /etc/banner "${REPO}config/banner" >/dev/null 2>&1
+    wget -q -O /etc/banner "${REPO}foldder/jengkolonline/banner" >/dev/null 2>&1
     
-    # > Add menu, thanks to Bhoikfost Yahya <3
+    # > Add menu, thanks to JENGKOLONLINE <3
     wget -O /tmp/menu-master.zip "${REPO}config/menu.zip" >/dev/null 2>&1
     mkdir /tmp/menu
     7z e  /tmp/menu-master.zip -o/tmp/menu/ >/dev/null 2>&1
@@ -398,7 +398,7 @@ EOF
 ### Tambahan
 function tambahan(){
     print_install "Memasang modul tambahan"
-    wget -O /usr/sbin/speedtest "${REPO}bin/speedtest" >/dev/null 2>&1
+    wget -O /usr/sbin/speedtest "${REPO}foldder/bin/speedtest" >/dev/null 2>&1
     chmod +x /usr/sbin/speedtest
 
     # > pasang gotop
@@ -408,7 +408,7 @@ function tambahan(){
     dpkg -i /tmp/gotop.deb >/dev/null 2>&1
 
     # > Pasang Limit
-    wget -qO /tmp/limit.sh "${REPO}limit/limit.sh" >/dev/null 2>&1
+    wget -qO /tmp/limit.sh "${REPO}foldder/limit/limit.sh" >/dev/null 2>&1
     chmod +x /tmp/limit.sh && bash /tmp/limit.sh >/dev/null 2>&1
 
     # > Pasang BBR Plus
