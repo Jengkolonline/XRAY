@@ -18,12 +18,12 @@ chmod +x /etc/xray/limit.shadowsocks
 chmod +x /etc/xray/limit.socks
 chmod +x /etc/xray/limit.shadowsocks2022
 systemctl daemon-reload
-systemctl enable limitvmess
-systemctl enable limitvless
-systemctl enable limittrojan
-systemctl enable limitshadowsocks
-systemctl enable limitsocks
-systemctl enable limitshadowsocks2022
+systemctl enable --now limitvmess
+systemctl enable --now limitvless
+systemctl enable --now limittrojan
+systemctl enable --now limitshadowsocks
+systemctl enable --now limitsocks
+systemctl enable --now limitshadowsocks2022
 systemctl start limitvmess
 systemctl start limitvless
 systemctl start limittrojan
