@@ -206,6 +206,8 @@ echo -e "\033[96m    ║    ${YELL}Vmess$NC            $NC: $grenbo$status_13   
 echo -e "\033[96m    ║    ${YELL}Vless$NC            $NC: $grenbo$status_16                \033[96m║"
 echo -e "\033[96m    ║    ${YELL}Trojan$NC           $NC: $grenbo$status_18                \033[96m║"
 echo -e "\033[96m    ║    ${YELL}Shadowsocks$NC      $NC: $grenbo$status_19                \033[96m║"
+echo -e "\033[96m    ║    ${YELL}Shadow2022$NC       $NC: $grenbo$status_17                \033[96m║"
+echo -e "\033[96m    ║    ${YELL}Socks 5$NC          $NC: $grenbo$status_20                \033[96m║"
 echo -e "\033[96m    ╚═════════════════════════════════════════════╝ ${NC}"
 echo -e "\033[96m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
 echo -e " [ ${YELL}TODAY ${NC}: $grenbo$ttoday ${NC}]         ${NC}[ ${YELL}MONTH ${NC}: $grenbo$bmon ${NC}]"
