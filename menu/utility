@@ -80,7 +80,7 @@ echo -e ""
 read -p "  Select From Options [ 1 - 22 or 0 back to menu ] : " menu
 case $menu in
 1) clear ;
-    run
+    uwu
     ;;
 2) clear ;
     get-backres
