@@ -29,10 +29,6 @@ PUB=$(cat /etc/slowdns/server.pub)
 NS=$(cat /etc/xray/dns)
 CITY=$(cat /etc/xray/city)
 clear
-PUB=$(cat /etc/slowdns/server.pub)
-NS=$(cat /etc/xray/dns)
-CITY=$(cat /etc/xray/city)
-clear
 NUMBER_OF_CLIENTS=$(grep -c -E "^#vl# " "/etc/vless/.vless.db")
         if [[ ${NUMBER_OF_CLIENTS} == '0' ]]; then
     echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
