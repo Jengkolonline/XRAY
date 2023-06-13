@@ -45,13 +45,13 @@ sed -i '/#ssws$/a\###& '"$user $exp"'\
 sed -i '/#ssgrpc$/a\###& '"$user $exp"'\
 },{"password": "'""$uuid""'","method": "'""$cipher""'","email": "'""$user""'"' /etc/xray/config.json
 echo $cipher:$uuid >/tmp/log
-socks_base64=$(cat /tmp/log)
+shadowsocks2022_base64=$(cat /tmp/log)
 echo -n "${socks_base64}" | base64 >/tmp/log1
-ss2022_base64e=$(cat /tmp/log1)
-ss2022_base64=$(cat /tmp/log)
-ss2022link1="ss://${ss2022_base64}@$domain:443?path=/shadowsocks2022&security=tls&host=${domain}&type=ws&sni=${domain}#${user}"
-ss2022link2="ss://${ss2022_base64}@$domain:80?path=/shadowsocks2022&security=none&host=${domain}&type=ws#${user}"
-ss2022link3="ss://${ss2022_base64}@$domain:443?security=tls&encryption=none&type=grpc&serviceName=shadowsocks2022-grpc&sni=$domain#${user}"
+shadowsocks2022_base64e=$(cat /tmp/log1)
+shadowsocks2022_base64=$(cat /tmp/log)
+ss2022link1="ss://${shadowsocks2022_base64}@$domain:443?path=/shadowsocks2022&security=tls&host=${domain}&type=ws&sni=${domain}#${user}"
+ss2022link2="ss://${shadowsocks2022_base64}@$domain:80?path=/shadowsocks2022&security=none&host=${domain}&type=ws#${user}"
+ss2022link3="ss://${shadowsocks2022_base64}@$domain:443?security=tls&encryption=none&type=grpc&serviceName=shadowsocks2022-grpc&sni=$domain#${user}"
 systemctl restart xray
 rm -rf /tmp/log
 rm -rf /tmp/log1
@@ -134,7 +134,7 @@ DATADB=$(cat /etc/shadowsocks2022/.shadowsocks2022.db | grep "^###" | grep -w "$
 if [[ "${DATADB}" != '' ]]; then
   sed -i "/\b${user}\b/d" /etc/shadowsocks2022/.shadowsocks2022.db
 fi
-echo "### ${user} ${exp} ${uuid}" >>/etc/shadowsocks/.shadowsocks.db
+echo "### ${user} ${exp} ${uuid}" >>/etc/shadowsocks2022/.shadowsocks2022.db
 clear
 echo -e "
 \033[1;93m━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m
