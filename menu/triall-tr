@@ -1,9 +1,10 @@
 #!/bin/bash
 clear
+# Getting
 ipsaya=$(wget -qO- ipinfo.io/ip)
 data_server=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
 date_list=$(date +"%Y-%m-%d" -d "$data_server")
-data_ip="https://raw.githubusercontent.com/rizkihdyt6/izinsc/main/ip"
+data_ip="https://raw.githubusercontent.com/Kulanbagong1/izinn/main/ip"
 checking_sc() {
   useexp=$(wget -qO- $data_ip | grep $ipsaya | awk '{print $3}')
   if [[ $date_list < $useexp ]]; then
@@ -17,8 +18,8 @@ checking_sc() {
     echo -e "   \033[0;33mYour VPS${NC} $ipsaya \033[0;33mHas been Banned${NC}"
     echo -e "     \033[0;33mBuy access permissions for scripts${NC}"
     echo -e "             \033[0;33mContact Admin :${NC}"
-    echo -e "      \033[0;36mTelegram${NC} t.me/RizkiHdyt99"
-    echo -e "      ${GREEN}WhatsApp${NC} wa.me/6285871027196"
+    echo -e "      \033[0;36mTelegram${NC} t.me/Jengkol_Online"
+    echo -e "      ${GREEN}WhatsApp${NC} wa.me/6282372139631"
     echo -e "\033[1;93m────────────────────────────────────────────\033[0m"
     exit
   fi
@@ -66,7 +67,7 @@ cat >/var/www/html/trojan-$user.txt <<-END
   skip-cert-verify: true
   udp: true
   ws-opts:
-    path: /trojan-ws
+    path: /trojan
     headers:
         Host: ${domain}
 _______________________________
@@ -88,7 +89,9 @@ _______________________________
 _______________________________
 Link Trojan Triall Account
 _______________________________
-Link WS : trojan://${uuid}@${domain}:443?path=%2Ftrojan-ws&security=tls&host=${domain}&type=ws&sni=${domain}#${user}
+Link WS : trojan://${uuid}@${domain}:443?path=/trojan&security=tls&host=${domain}&type=ws&sni=${domain}#${user}
+______________________________
+Link NTLS : trojan://${uuid}@$domain:80?path=/trojan&security=none&host=$domain&type=ws#$user
 _______________________________
 Link GRPC : trojan://${uuid}@${domain}:443?mode=gun&security=tls&type=grpc&serviceName=trojan-grpc&sni=${domain}#${user}
 _______________________________
@@ -96,32 +99,37 @@ _______________________________
 
 
 END
-trojanlink="trojan://${uuid}@${domain}:443?path=%2Ftrojan-ws&security=tls&host=${domain}&type=ws&sni=${domain}#${user}"
+trojanlink="trojan://${uuid}@${domain}:443?path=/trojan&security=tls&host=${domain}&type=ws&sni=${domain}#${user}"
+trojanlink2="trojan://${uuid}@$domain:80?path=/trojan&security=none&host=$domain&type=ws#$user"
 trojanlink1="trojan://${uuid}@${domain}:443?mode=gun&security=tls&type=grpc&serviceName=trojan-grpc&sni=${domain}#${user}"
 
 TEXT="
 <code>──────────────────────────</code>
 <code>    SUCCES CREAT TRIALL TROJAN</code/>
 <code>──────────────────────────</code>
-<code>Remarks      : ${user}</code>
-<code>Domain       : ${domain}</code>
-<code>Host Slowdns : ${NS}</code>
-<code>Pub Key     : ${PUB}</code>
-<code>Location     : $CITY</code>
-<code>User Quota   : ${Quota} GB</code>
-<code>Port DNS     : 443,53</code>
+<code>Remarks       : ${user}</code>
+<code>Domain        : ${domain}</code>
+<code>Host Slowdns  : ${NS}</code>
+<code>Pub Key       : ${PUB}</code>
+<code>Location      : $CITY</code>
+<code>User Quota    : ${Quota} GB</code>
+<code>Port DNS      : 443,53</code>
 <code>Port WS(TLS)  : 443</code>
+<code>Port No(TLS)  : 80</code>
 <code>Port GRPC     : 443</code>
-<code>User ID     : ${uuid}</code>
-<code>AlterId      : 0</code>
-<code>Security    : auto</code>
-<code>Network    : WS(TLS) or gRPC</code>
-<code>ServiceName  : trojan-grpc</code>
+<code>User ID       : ${uuid}</code>
+<code>AlterId       : 0</code>
+<code>Security      : auto</code>
+<code>Network       : WS(TLS) or gRPC</code>
+<code>ServiceName   : trojan-grpc</code>
 <code>──────────────────────────</code>
 <code>Link TLS     :</code> 
 <code>${trojanlink}</code>
 <code>───────────────────────────</code>
-<code>Link NTLS    :</code> 
+<code>Link None TLS     :</code> 
+<code>${trojanlink2}</code>
+<code>───────────────────────────</code>
+<code>Link GRPC    :</code> 
 <code>${trojanlink1}</code>
 <code>───────────────────────────</code>
 <code>Format OpenClash :</code> 
@@ -162,6 +170,7 @@ echo -e "Host           : ${domain}"
 echo -e "Location       : $CITY"
 echo -e "User Quota     : ${Quota} GB"
 echo -e "Port WS(TLS)   : 443"
+echo -e "Port WS(TLS)   : 80"
 echo -e "Port  gRPC     : 443"
 echo -e "User ID        : ${uuid}"
 echo -e "AlterID        : 0"
@@ -170,6 +179,8 @@ echo -e "Path           : /trojan"
 echo -e "Network        : WS(TLS) or gRPC"
 echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "Link WS   : ${trojanlink}"
+echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "Link None : ${trojanlink2}"
 echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "Link GRPC : ${trojanlink1}"
 echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
