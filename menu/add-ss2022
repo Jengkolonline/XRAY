@@ -1,0 +1,171 @@
+#!/bin/bash
+# //====================================================
+# //  System Request:Debian 9+/Ubuntu 18.04+/20+
+# //  Author:  bhoikfostyahya
+# //  Dscription: Xray Menu Management
+# //  email: admin@bhoikfostyahya.com
+# //  telegram: https://t.me/bhoikfost_yahya
+# //====================================================
+# // font color configuration | BHOIKFOST YAHYA AUTOSCRIPT
+red() { echo -e "\\033[32;1m${*}\\033[0m"; }
+domain=$(cat /etc/xray/domain)
+PUB=$(cat /etc/slowdns/server.pub)
+CITY=$(cat /etc/xray/city)
+NS=$(cat /etc/xray/dns)
+clear
+until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
+  echo -e "\033[1;93m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+  echo -e "\e[42m       Add Shadowsocks Ws/Grpc Account   \E[0m"
+  echo -e "\033[1;93m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+
+  read -rp "User: " -e user
+  CLIENT_EXISTS=$(grep -w $user /etc/xray/config.json | wc -l)
+
+  if [[ ${CLIENT_EXISTS} == '1' ]]; then
+    clear
+    echo -e "\033[1;93m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+    echo -e "\e[42m       Add Shadowsocks Ws/Grpc Account   \E[0m"
+    echo -e "\033[1;93m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+    echo ""
+    echo "A client with the specified name was already created, please choose another name."
+    echo ""
+    echo -e "\033[1;93m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+    read -n 1 -s -r -p "Press any key to back on menu"
+    menu
+  fi
+done
+
+cipher="aes-128-gcm"
+uuid=$(cat /proc/sys/kernel/random/uuid)
+read -p "Expired (days): " masaaktif
+read -p "Limit User (GB): " Quota
+exp=$(date -d "$masaaktif days" +"%Y-%m-%d")
+sed -i '/#ssws$/a\###& '"$user $exp"'\
+},{"password": "'""$uuid""'","method": "'""$cipher""'","email": "'""$user""'"' /etc/xray/config.json
+sed -i '/#ssgrpc$/a\###& '"$user $exp"'\
+},{"password": "'""$uuid""'","method": "'""$cipher""'","email": "'""$user""'"' /etc/xray/config.json
+echo $cipher:$uuid >/tmp/log
+socks_base64=$(cat /tmp/log)
+echo -n "${socks_base64}" | base64 >/tmp/log1
+ss2022_base64e=$(cat /tmp/log1)
+ss2022_base64=$(cat /tmp/log)
+ss2022link1="ss://${ss2022_base64}@$domain:443?path=/shadowsocks2022&security=tls&host=${domain}&type=ws&sni=${domain}#${user}"
+ss2022link2="ss://${ss2022_base64}@$domain:80?path=/shadowsocks2022&security=none&host=${domain}&type=ws#${user}"
+ss2022link3="ss://${ss2022_base64}@$domain:443?security=tls&encryption=none&type=grpc&serviceName=shadowsocks2022-grpc&sni=$domain#${user}"
+systemctl restart xray
+rm -rf /tmp/log
+rm -rf /tmp/log1
+cat >/var/www/html/shadowsocks2022-$user.txt <<-END
+_______________________________________________________
+           Thank You For Using Our Services
+                Xray/Shdwsok Account
+        Autoscript xray-lite dev Jengkolonline
+_____________________script v.2_________________________
+      System Request:Debian 9+/Ubuntu 18.04+/20+
+      Author:  Jengkolonline
+      Dscription: Xray Menu Management
+      email: jengkolonline323@gmail.com
+      telegram: https://t.me/Jengkol_Online
+      installer script : 082372139631
+_______________________________________________________
+              Format Shadowsocks2022 (TLS)
+_______________________________________________________
+
+- name: SS2022-$user
+type: ss
+server: $domain
+port: 443
+cipher: $cipher2
+password: $serverpsk:$userpsk
+plugin: v2ray-plugin
+plugin-opts:
+mode: websocket
+tls: true
+skip-cert-verify: true
+host: $domain
+path: "/shadowsocks2022"
+mux: true
+_______________________________________________________
+              Format Shadowsocks2022 (CDN)
+_______________________________________________________
+- name: SS2022-$user
+type: ss
+server: $domain
+port: 80
+cipher: $cipher2
+password: $serverpsk:$userpsk
+plugin: v2ray-plugin
+plugin-opts:
+mode: websocket
+tls: false
+skip-cert-verify: false
+host: $domain
+path: "/shadowsocks2022"
+mux: true
+_______________________________________________________
+              Link Sockes5 Account
+_______________________________________________________
+Link TLS : ${ss2022link1}
+_______________________________________________________
+Link NONE : ${ss2022link2}
+_______________________________________________________
+Link gRPC : ${ss2022link3}
+_______________________________________________________
+
+END
+
+systemctl restart xray >/dev/null 2>&1
+service cron restart >/dev/null 2>&1
+if [ ! -e /etc/shadowsocks2022 ]; then
+  mkdir -p /etc/shadowsocks2022
+fi
+
+if [ -z ${Quota} ]; then
+  Quota="0"
+fi
+
+c=$(echo "${Quota}" | sed 's/[^0-9]*//g')
+d=$((${c} * 1024 * 1024 * 1024))
+
+if [[ ${c} != "0" ]]; then
+  echo "${d}" >/etc/shadowsocks2022/${user}
+fi
+DATADB=$(cat /etc/shadowsocks2022/.shadowsocks2022.db | grep "^###" | grep -w "${user}" | awk '{print $2}')
+if [[ "${DATADB}" != '' ]]; then
+  sed -i "/\b${user}\b/d" /etc/shadowsocks2022/.shadowsocks2022.db
+fi
+echo "### ${user} ${exp} ${uuid}" >>/etc/shadowsocks/.shadowsocks.db
+clear
+echo -e "
+\033[1;93m━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m
+\e[42mThank You For Using Our Services\E[0m
+\e[42mShadowsocks WS/GRPC Account      \E[0m
+\033[1;93m━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m
+Remarks    : ${user}
+Domain     : ${domain}
+Location   : $CITY
+User Quota : ${Quota} GB
+Port TLS   : 443
+Port NONE  : 80
+Port  GRPC : 443
+Password   : ${uuid}
+Cipers     : aes-128-gcm
+Network    : ws/grpc
+Path       : /ss-ws
+ServiceName: ss-grpc
+\033[1;93m━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m
+Link TLS   : ${ss2022link1}
+\033[1;93m━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m
+Link NONE   : ${ss2022link1}
+\033[1;93m━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m
+Link gRPC  : ${ss2022link1}
+\033[1;93m━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m
+Link JSON  : http://${domain}:81/shadowsocks2022-$user.txt
+\033[1;93m━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m
+Expired On : $exp
+\033[1;93m━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m
+" | tee -a /etc/log-create-user.log
+read -n 1 -s -r -p "Press any key to back on menu"
+
+menu
+
