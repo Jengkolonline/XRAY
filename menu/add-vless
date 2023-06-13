@@ -153,10 +153,10 @@ TEXT="
 <code>Domain       : ${domain}</code>
 <code>Location     : $CITY</code>
 <code>User Quota   : ${Quota} GB</code>
-<code>Port TLS     : 443</code>
+<code>Port TLS     : 443,2053,2083,2087,2096,8443</code>
 <code>Port DNS     : 443, 53</code>
 <code>Port NTLS    : 80, 8080, 2086</code>
-<code>Port GRPC   : 443</code>
+<code>Port GRPC   : 443,2053,2083,2087,2096,8443</code>
 <code>Port XRAY   : 443,80</code>
 <code>User ID      : ${uuid}</code>
 <code>AlterId     : 0</code>
@@ -213,10 +213,10 @@ echo -e "Remarks     : ${user}"
 echo -e "Domain      : ${domain}"
 echo -e "Location    : $CITY"
 echo -e "User Quota  : ${Quota} GB"
-echo -e "port TLS    : 443"
+echo -e "port TLS    : 443,2053,2083,2087,2096,8443"
 echo -e "Port DNS    : 443, 53 "
 echo -e "Port NTLS   : 80, 8080, 2086"
-echo -e "Port GRPC   : 443"
+echo -e "Port GRPC   : 443,2053,2083,2087,2096,8443"
 echo -e "Port XRAY   : 443,80"
 echo -e "User ID     : ${uuid}"
 echo -e "AlterId     : 0"
