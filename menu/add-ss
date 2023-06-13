@@ -84,7 +84,7 @@ shadowsockslink1="ss://${shadowsocks_base64e}@${domain}:443?mode=gun&security=tl
 systemctl reload xray
 rm -rf /tmp/log
 rm -rf /tmp/log1
-cat >/var/www/html/ss-$user.txt <<-END
+cat >/var/www/html/shadowsocks-$user.txt <<-END
 =========================
 P R O J E C T  O F
 =========================
@@ -360,7 +360,7 @@ TEXT="
 <code>•────•──────•──────•─────•</code>
 <code>       Format OpenClash  </code>
 <code>•────•──────•──────•─────•</code>
-<code>https://${domain}:81/trojan-$user.txt</code>
+<code>https://${domain}:81/shadowsocks-$user.txt</code>
 <code>•────•──────•──────•─────•</code>
 <code>Aktif Selama   : $masaaktif Hari</code>
 <code>Dibuat Pada    : $tnggl</code>
@@ -422,7 +422,7 @@ exho -e "${shadowsockslink1}"
 echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "                  Link JSON      "
 echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "https://${domain}:81/ss-$user.txt"
+echo -e "https://${domain}:81/shadowsocks-$user.txt"
 echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "Aktif Selama   : $masaaktif Hari"
 echo -e "Dibuat Pada    : $tnggl"
