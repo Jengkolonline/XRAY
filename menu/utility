@@ -66,7 +66,7 @@ echo -e ""
 echo -e "\033[96m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
 echo -e "                    \e[1;97m    MENU TAMBAHAN \e[0m"
 echo -e "\033[96m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e""
+echo -e ""
 echo -e "  ${grenbo}[16] ${NC}${YELL}Installer RDP ${NC}"
 echo -e "  ${grenbo}[17] ${NC}${YELL}Installer WEBUZO ${NC}"
 echo -e "  ${grenbo}[18] ${NC}${YELL}Installer VESTA ${NC}"
@@ -74,9 +74,10 @@ echo -e "  ${grenbo}[19] ${NC}${YELL}Installer UI B.Inggris ${NC}"
 echo -e "  ${grenbo}[20] ${NC}${YELL}Installer PTERODACTYL ${NC}"
 echo -e "  ${grenbo}[21] ${NC}${YELL}Installer CYBERPANEL ${NC}"
 echo -e "  ${grenbo}[22] ${NC}${YELL}Installer WEBMIN ${NC}"
+echo -e ""
 echo -e "  ${grenbo}[0] ${NC} ${YELL}Back To Menu${NC}"
 echo -e ""
-read -p "  Select From Options [ 1 - 15 or 0 back to menu ] : " menu
+read -p "  Select From Options [ 1 - 22 or 0 back to menu ] : " menu
 case $menu in
 1) clear ;
     run
@@ -142,7 +143,7 @@ case $menu in
    wget -O installer.sh ${CB} && chmod +x install.sh && ./install.sh
    ;;
 22) clear ;
-   xp
+   webmin
    ;;
 0) clear ;
    menu
