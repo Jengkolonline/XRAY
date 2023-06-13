@@ -155,7 +155,7 @@ DATADB=$(cat /etc/socks/.socks.db | grep "^###" | grep -w "${user}" | awk '{prin
 if [[ "${DATADB}" != '' ]]; then
   sed -i "/\b${user}\b/d" /etc/socks/.socks.db
 fi
-echo "### ${user} ${exp} ${uuid}" >>/etc/shadowsocks/.shadowsocks.db
+echo "### ${user} ${exp} ${uuid}" >>/etc/socks/.socks.db
 clear
 echo -e "
 \033[1;93m━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m
