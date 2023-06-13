@@ -211,7 +211,7 @@ TEXT="
 <code>User Quota   : ${Quota} GB</code>
 <code>Port TLS     : 443,2053,2083,2087,2096,8443</code>
 <code>Port DNS     : 443, 53</code>
-<code>Port NTLS    : 80, 8080, 2086</code>
+<code>Port NTLS    : 80,2052,2082,2086,2095,8080,8880</code>
 <code>Port GRPC    : 443,2053,2083,2087,2096,8443</code>
 <code>User ID      : ${uuid}</code>
 <code>AlterId      : 0</code>
@@ -272,7 +272,7 @@ echo -e "Pub Key      : ${PUB}"
 echo -e "Location     : $CITY"
 echo -e "User Quota   : ${Quota} GB"
 echo -e "Port TLS     : 443,2053,2083,2087,2096,8443"
-echo -e "Port NTLS    : 80, 8080, 2086"
+echo -e "Port NTLS    : 80,2052,2082,2086,2095,8080,8880"
 echo -e "Port DNS     : 443, 53 "
 echo -e "Port GRPC    : 443,2053,2083,2087,2096,8443"
 echo -e "User ID      : ${uuid}"
