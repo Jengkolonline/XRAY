@@ -195,7 +195,7 @@ echo -e "\033[96m━━━━━━━━━━━━━━━━━━━━━
 echo -e "\e[1;97m                   SERVICE RUNNING              \e[0m"
 echo -e "\033[96m    ╔═════════════════════════════════════════════╗ ${NC}"
 echo -e "\033[96m    ║    ${YELL}OpenSSH$NC          $NC: $grenbo$status_1${NC}                \033[96m║"
-echo -e "\033[96m    ║    ${YELL}Dropbear$NC         $NC: $grenbo$status_2                \033[96m║"
+echo -e "\033[96m    ║    ${YELL}Dropbear$NC         $NC: $grenbo$status_3                \033[96m║"
 echo -e "\033[96m    ║    ${YELL}SshWS$NC            $NC: $grenbo$status_4                \033[96m║"
 echo -e "\033[96m    ║    ${YELL}OpenVPN$NC          $NC: $grenbo$status_5                \033[96m║"
 echo -e "\033[96m    ║    ${YELL}Nginx$NC            $NC: $grenbo$status_6                \033[96m║"
