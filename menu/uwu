@@ -201,7 +201,7 @@ echo -e "\033[96m    ║    ${YELL}OpenVPN$NC          $NC: $grenbo$status_5    
 echo -e "\033[96m    ║    ${YELL}Nginx$NC            $NC: $grenbo$status_6                \033[96m║"
 echo -e "\033[96m    ║    ${YELL}Haproxy$NC          $NC: $grenbo$status_7                \033[96m║"
 echo -e "\033[96m    ║    ${YELL}SlowDNS$NC          $NC: $grenbo$status_8                \033[96m║"
-echo -e "\033[96m    ║    ${YELL}OpenVPN$NC          $NC: $grenbo$status_10                \033[96m║"
+#echo -e "\033[96m    ║    ${YELL}OpenVPN$NC          $NC: $grenbo$status_10                \033[96m║"
 echo -e "\033[96m    ║    ${YELL}Vmess$NC            $NC: $grenbo$status_13                \033[96m║"
 echo -e "\033[96m    ║    ${YELL}Vless$NC            $NC: $grenbo$status_16                \033[96m║"
 echo -e "\033[96m    ║    ${YELL}Trojan$NC           $NC: $grenbo$status_18                \033[96m║"
