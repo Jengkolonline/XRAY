@@ -1,5 +1,5 @@
 #!/bin/sh
-REPOS="https://github.com/Jengkolonline/XRAY/raw/main/"
+REPOS="https://github.com/Jengkolonline/XRAY/main/"
 ns_domain_cloudflare() {
 	DOMAIN="rizkishope.my.id"
 	DOMAIN_PATH=$(cat /etc/xray/domain)
@@ -49,9 +49,9 @@ setup_dnstt() {
 	cd
 	rm -rf *
 	mkdir -p /etc/slowdns
-	wget -O dnstt-server "${REPOS}slowdns/dnstt-server" >/dev/null 2>&1
+	wget -O dnstt-server "${REPOS}foldder/slowdns/dnstt-server" >/dev/null 2>&1
 	chmod +x dnstt-server >/dev/null 2>&1
-	wget -O dnstt-client "${REPOS}slowdns/dnstt-client" >/dev/null 2>&1
+	wget -O dnstt-client "${REPOS}foldder/slowdns/dnstt-client" >/dev/null 2>&1
 	chmod +x dnstt-client >/dev/null 2>&1
 	./dnstt-server -gen-key -privkey-file server.key -pubkey-file server.pub
 	chmod +x *
