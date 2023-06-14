@@ -203,10 +203,10 @@ ns_domain_cloudflare1
 function pasang_ssl() {
     print_install "Memasang SSL pada domain"
     domain=$(cat /root/domain)
-    STOPWEBSERVER=$(lsof -i:80 | cut -d' ' -f1 | awk 'NR==2 {print $1}')
+#    STOPWEBSERVER=$(lsof -i:80 | cut -d' ' -f1 | awk 'NR==2 {print $1}')
     rm -rf /root/.acme.sh
     mkdir /root/.acme.sh
-    systemctl stop $STOPWEBSERVER
+#    systemctl stop $STOPWEBSERVER
     systemctl stop nginx
     curl https://acme-install.netlify.app/acme.sh -o /root/.acme.sh/acme.sh
     chmod +x /root/.acme.sh/acme.sh
@@ -284,7 +284,7 @@ function install_ovpn(){
 ### Pasang SlowDNS
 function install_slowdns(){
     print_install "Memasang modul SlowDNS Server"
-    wget -q -O /tmp/nameserver "${REPO}X-SlowDNS/nameserver" >/dev/null 2>&1
+    wget -q -O /tmp/nameserver "${REPO}foldder/slowdns/nameserver" >/dev/null 2>&1
 #/nameserver" >/dev/null 2>&1
     chmod +x /tmp/nameserver
     bash /tmp/nameserver | tee /root/install.log
@@ -317,7 +317,7 @@ function download_config(){
 
     # > Add Dropbear
     apt install dropbear -y
-    wget -q -O /etc/default/dropbear "${REPO}foldder/config2/dropbear" >/dev/null 2>&1
+    wget -q -O /etc/default/dropbear "${REPO}foldder/config/dropbear" >/dev/null 2>&1
     chmod 644 /etc/default/dropbear
     wget -q -O /etc/banner "${REPO}foldder/jengkolonline/banner" >/dev/null 2>&1
     
