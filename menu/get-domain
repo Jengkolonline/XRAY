@@ -21,8 +21,8 @@ function get_acme_domain() {
     echo -e "${GREEN}--->${NC}     Start "
     systemctl stop nginx
     systemctl stop haproxy
-    STOPWEBSERVER=$(lsof -i:80 | cut -d' ' -f1 | awk 'NR==2 {print $1}')
-    systemctl stop $STOPWEBSERVER
+#    STOPWEBSERVER=$(lsof -i:80 | cut -d' ' -f1 | awk 'NR==2 {print $1}')
+#    systemctl stop $STOPWEBSERVER
     echo -e "${GREEN}--->${NC}     Starting renew cert "
     sleep 2
     echo -e "${GREEN}--->$NC     Getting acme for cert"
