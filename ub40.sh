@@ -27,7 +27,7 @@ ISP=$(wget -qO- ipinfo.io/org)
 CITY=$(curl -s ipinfo.io/city)
 TIME=$(date +'%Y-%m-%d %H:%M:%S')
 RAMMS=$(free -m | awk 'NR==2 {print $2}')
-KEY="6003347945:AAHv1Ti4HQliYwpYm8sbKrriDkSMqqJLUqE"
+KEY="6149751863:AAH_trZtL0Y6NMskF6nxeVGZgFpowXi85uc"
 URL="https://api.telegram.org/bot$KEY/sendMessage"
 REPO="https://raw.githubusercontent.com/Jengkolonline/XRAY/main/"
 CDNF="https://raw.githubusercontent.com/Jengkolonline/XRAY/main/"
