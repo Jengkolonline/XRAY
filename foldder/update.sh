@@ -2,6 +2,8 @@
 dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
 biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
 ###########- COLOR CODE -##############
+apt install ruby -y
+gem install lolcat
 REPO="https://raw.githubusercontent.com/Jengkolonline/XRAY/main/"
 echo -e " [INFO] Downloading Update File"
 sleep 2
